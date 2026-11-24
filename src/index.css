@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Page 1 (PrismaHero) keeps its exact original warm bone #E1E0CC tokens untouched */
+  :root {
+    --background: 54 32% 93%;
+    --foreground: 40 8% 6%;
+    --primary: 57 28% 84%;
+    --primary-foreground: 40 8% 5%;
+    --secondary: 54 20% 88%;
+    --secondary-foreground: 40 8% 8%;
+    --muted: 54 18% 87%;
+    --muted-foreground: 40 6% 36%;
+    --accent: 57 28% 84%;
+    --accent-foreground: 40 8% 5%;
+    --border: 45 12% 78%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 57 28% 84%;
+    --primary: 57 28% 84%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 40 5% 10%;
+    --secondary-foreground: 57 28% 84%;
+    --muted: 40 4% 12%;
+    --muted-foreground: 55 12% 58%;
+    --accent: 57 28% 84%;
+    --accent-foreground: 0 0% 4%;
+    --border: 57 16% 18%;
+  }
+
+  /* Pages 2..End use the AOMI Golden-Hour Misty Mountain & Smoked-Forest Glass UI */
+  .valley-pages {
+    --background: 48 28% 92%;
+    --foreground: 124 28% 12%;
+    --primary: 39 58% 72%;
+    --primary-foreground: 124 34% 8%;
+    --border: 40 30% 72%;
+  }
+
+  .dark .valley-pages {
+    --background: 124 34% 5%;
+    --foreground: 44 45% 92%;
+    --primary: 39 62% 72%;
+    --primary-foreground: 124 38% 6%;
+    --border: 40 38% 30%;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+}
+
+/* Smoked Rainforest & Sunlit Gold Glass Controls (Lighter unblurred clarity on Pages 2..End) */
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-[#b59c6a]/35 bg-[#faf7ee]/74 shadow-[0_12px_36px_rgba(16,28,16,0.12),inset_0_1px_0_rgba(255,252,240,0.85)] backdrop-blur-[4px]
+           dark:border-[#e3c68a]/22 dark:bg-[#08140a]/65 dark:shadow-[0_18px_48px_rgba(2,8,4,0.62),inset_0_1px_0_rgba(247,214,142,0.16)];
+  }
+
+  .glass-subtle {
+    @apply rounded-xl border border-[#b59c6a]/30 bg-[#f3eee0]/72 backdrop-blur-[2px]
+           dark:border-[#e3c68a]/16 dark:bg-[#0d1c0f]/65;
+  }
+
+  .lab-badge {
+    @apply inline-flex items-center gap-2 rounded-full border border-[#9e8048]/35
+           bg-[#e8cfa0]/20 px-3.5 py-1 font-mono text-[11px] font-semibold tracking-[0.16em]
+           text-[#47381b] uppercase backdrop-blur-md
+           dark:border-[#e3c68a]/35 dark:bg-[#e3c68a]/12 dark:text-[#f1ddb3];
+  }
+
+  .lab-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#233a22] to-[#345431] px-5 py-2.5
+           font-medium text-[#f8f2e4] shadow-[0_6px_22px_rgba(24,44,24,0.3)] transition-all hover:brightness-110
+           dark:from-[#e6c98e] dark:via-[#f0d9a7] dark:to-[#f8edd4] dark:text-[#0b150c]
+           dark:shadow-[0_0_24px_rgba(230,201,142,0.28)]
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e3c68a]
+           focus-visible:ring-offset-2 focus-visible:ring-offset-[#09120a] active:scale-[0.98];
+  }
+
+  .lab-btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-[#8e784c]/35
+           bg-[#faf7ee]/75 px-4 py-2 font-medium text-[#1b2b1c] backdrop-blur-md transition-all hover:border-[#6e5a33]
+           hover:bg-[#f2ecdc] dark:border-[#e3c68a]/25 dark:bg-[#0c160d]/78 dark:text-[#f3ead8]
+           dark:hover:border-[#e3c68a]/60 dark:hover:bg-[#e3c68a]/12
+           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e3c68a] active:scale-[0.98];
+  }
+}
+
+/* Warm Golden-Hour Range Sliders */
+input[type='range'].lab-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type='range'].lab-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 9999px;
+  background: #f0d8a8;
+  border: 2px solid #162617;
+  box-shadow: 0 0 12px rgba(235, 200, 128, 0.72);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type='range'].lab-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.16);
+}
+
+input[type='range'].lab-slider::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border-radius: 9999px;
+  background: #f0d8a8;
+  border: 2px solid #162617;
+  box-shadow: 0 0 12px rgba(235, 200, 128, 0.72);
+  cursor: pointer;
+}
+
+/* Cinematic Film-Grain Noise Overlay (kept for Page 1 PrismaHero) */
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.32'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Gentle Cinematic Canopy Drift Animation */
+@keyframes canopy-drift {
+  0% {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.07) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+.animate-canopy-drift {
+  animation: canopy-drift 26s ease-in-out infinite alternate;
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* PrismJS Verilog Syntax Highlighting (HexDumpDecode Phosphor Terminal Palette) */
+code[class*='language-'],
+pre[class*='language-'],
+span[class*='language-'] {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  tab-size: 4;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6b8fae;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #93b4d0;
+}
+
+.token.keyword,
+.token.important {
+  color: #7dd3fc;
+  font-weight: 600;
+}
+
+.token.number,
+.token.boolean,
+.token.constant {
+  color: #fcd34d;
+}
+
+.token.string,
+.token.char {
+  color: #6ee7b7;
+}
+
+.token.function,
+.token.kernel {
+  color: #c4b5fd;
+}
+
+.token.operator {
+  color: #34d399;
+}
+
+/* Subtle Golden-Forest Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(227, 198, 138, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(227, 198, 138, 0.58);
+}
