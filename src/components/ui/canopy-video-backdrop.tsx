@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { useTheme } from '@/context/ThemeContext';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
-export const CANOPY_BACKDROP_SRC = '/canopy-bg.jpg';
+export const CANOPY_BACKDROP_SRC = `${import.meta.env.BASE_URL}canopy-bg.jpg`;
 
 export interface CanopyVideoBackdropProps {
   className?: string;
