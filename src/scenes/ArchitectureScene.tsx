@@ -99,12 +99,12 @@ const ArchBlockMesh: React.FC<{
       {/* Crisp Hardware Block Label */}
       <Html position={[0, 0.05, d / 2 + 0.08]} center distanceFactor={13} zIndexRange={[15, 0]}>
         <div
-          className={`pointer-events-none select-none rounded-lg border px-2.5 py-1 text-center backdrop-blur-md transition-all ${
+          className={`pointer-events-none select-none rounded-lg border px-2.5 py-1 text-center transition-all ${
             isSelected
               ? 'border-cyan-300 bg-slate-950/95 shadow-glow-cyan'
               : isHovered
-                ? 'border-cyan-400/70 bg-slate-950/90'
-                : 'border-slate-700/80 bg-slate-950/80'
+                ? 'border-cyan-400/70 bg-slate-950/92'
+                : 'border-slate-700/80 bg-slate-950/86'
           }`}
         >
           <div
@@ -122,7 +122,7 @@ const ArchBlockMesh: React.FC<{
       {/* Hover Tooltip */}
       {isHovered && (
         <Html position={[0, h / 2 + 0.85, 0]} center distanceFactor={13} zIndexRange={[30, 0]}>
-          <div className="pointer-events-none w-56 rounded-xl border border-cyan-400/50 bg-slate-950/95 p-2.5 text-left shadow-xl backdrop-blur-xl">
+          <div className="pointer-events-none w-56 rounded-xl border border-cyan-400/50 bg-slate-950/95 p-2.5 text-left shadow-xl">
             <div className="mb-1 flex items-center justify-between gap-2">
               <span className="font-mono text-[10px] font-bold uppercase text-cyan-300">
                 Click to inspect RTL

@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
 
       {/* Smoked-Forest & Champagne Gold Floating Notch Bar (Pages 2..End) */}
       <div className="mx-auto flex max-w-6xl justify-center px-2 sm:px-4">
-        <div className="relative flex w-full items-center justify-between gap-3 overflow-hidden rounded-b-2xl border-x border-b border-[#e3c68a]/25 bg-[#0a140b]/90 px-4 py-2 text-[#f5efe0] shadow-[0_14px_40px_rgba(4,10,5,0.65),inset_0_-1px_0_rgba(227,198,138,0.18)] backdrop-blur-2xl md:rounded-b-3xl md:px-6">
+        <div className="relative flex w-full items-center justify-between gap-3 overflow-hidden rounded-b-2xl border-x border-b border-[#e3c68a]/25 bg-[#0a140b]/92 px-4 py-2 text-[#f5efe0] shadow-[0_14px_40px_rgba(4,10,5,0.65),inset_0_-1px_0_rgba(227,198,138,0.18)] md:rounded-b-3xl md:px-6">
           {/* Brand */}
           <a
             href="#top"
@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
       {/* Mobile Drawer */}
       {mobileOpen && (
         <nav aria-label="Mobile navigation" className="mx-auto mt-1.5 max-w-md px-3 xl:hidden">
-          <div className="grid grid-cols-3 gap-1.5 rounded-2xl border border-[#e3c68a]/25 bg-[#0a140b]/95 p-3 shadow-2xl backdrop-blur-xl">
+          <div className="grid grid-cols-3 gap-1.5 rounded-2xl border border-[#e3c68a]/25 bg-[#0a140b]/95 p-3 shadow-2xl">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}

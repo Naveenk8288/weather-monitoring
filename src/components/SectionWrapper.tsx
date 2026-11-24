@@ -27,7 +27,7 @@ export const SectionWrapper: React.FC<SectionWrapperProps> = ({
       id={id}
       className={`relative scroll-mt-16 px-2 py-2.5 sm:px-3 sm:py-3 ${className}`}
     >
-      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-[#b59c6a]/35 bg-[#f7f3e8]/68 px-4 py-14 shadow-[0_20px_54px_rgba(12,24,14,0.16),inset_0_1px_0_rgba(255,250,235,0.85)] backdrop-blur-[3px] sm:px-8 md:rounded-[2rem] md:px-12 md:py-20 dark:border-[#e3c68a]/25 dark:bg-[#071209]/50 dark:shadow-[0_24px_68px_rgba(2,8,4,0.65),inset_0_1px_0_rgba(247,214,142,0.18)]">
+      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-[#b59c6a]/35 bg-[#f7f3e8]/55 px-4 py-14 shadow-[0_20px_54px_rgba(12,24,14,0.16),inset_0_1px_0_rgba(255,250,235,0.85)] sm:px-8 md:rounded-[2rem] md:px-12 md:py-20 dark:border-[#e3c68a]/25 dark:bg-[#071209]/40 dark:shadow-[0_24px_68px_rgba(2,8,4,0.65),inset_0_1px_0_rgba(247,214,142,0.18)]">
         {/* Warm golden-hour sunlit top rim glow */}
         <div
           aria-hidden="true"

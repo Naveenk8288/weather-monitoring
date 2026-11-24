@@ -279,7 +279,7 @@ export const ControlFsmScene: React.FC<ControlFsmSceneProps> = ({
             </mesh>
             <Html position={[tr.mid.x, tr.mid.y + 0.25, tr.mid.z]} center distanceFactor={11} zIndexRange={[10, 0]}>
               <div
-                className={`pointer-events-none whitespace-nowrap rounded-full border px-2 py-0.5 font-mono text-[10px] backdrop-blur ${
+                className={`pointer-events-none whitespace-nowrap rounded-full border px-2 py-0.5 font-mono text-[10px] ${
                   isNextEdge
                     ? 'border-cyan-300/70 bg-slate-950/95 text-cyan-200'
                     : 'border-slate-700/60 bg-slate-950/70 text-slate-400'

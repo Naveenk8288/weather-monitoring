@@ -37,7 +37,7 @@ export const StickySimulatorBar: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-2 w-80 overflow-hidden rounded-2xl border border-[#e3c68a]/25 bg-[#0b160c]/94 p-4 text-[#f5efe0] shadow-[0_18px_48px_rgba(4,10,5,0.78),inset_0_1px_0_rgba(245,222,170,0.2)] backdrop-blur-2xl"
+            className="mb-2 w-80 overflow-hidden rounded-2xl border border-[#e3c68a]/25 bg-[#0b160c]/94 p-4 text-[#f5efe0] shadow-[0_18px_48px_rgba(4,10,5,0.78),inset_0_1px_0_rgba(245,222,170,0.2)]"
           >
             <div className="mb-3 flex items-center justify-between border-b border-[#e3c68a]/15 pb-2">
               <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#ebd29d]">
@@ -137,7 +137,7 @@ export const StickySimulatorBar: React.FC = () => {
       </AnimatePresence>
 
       {/* Compact Smoked-Forest & Gold Pill Dock */}
-      <div className="flex items-center gap-1.5 rounded-full border border-[#e3c68a]/30 bg-[#0a140b]/92 p-1.5 text-[#f5efe0] shadow-[0_12px_36px_rgba(4,10,5,0.7)] backdrop-blur-2xl">
+      <div className="flex items-center gap-1.5 rounded-full border border-[#e3c68a]/30 bg-[#0a140b]/92 p-1.5 text-[#f5efe0] shadow-[0_12px_36px_rgba(4,10,5,0.7)]">
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}

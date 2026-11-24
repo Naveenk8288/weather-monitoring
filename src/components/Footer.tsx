@@ -6,8 +6,8 @@ import { PROJECT_META } from '../data/projectData';
 export const Footer: React.FC = () => {
   return (
     <footer className="px-2 pb-3 pt-2.5 sm:px-3">
-      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-[#b59c6a]/35 bg-[#071209]/70 px-6 py-12 text-[#f5efe0] shadow-[0_24px_64px_rgba(2,8,4,0.72)] backdrop-blur-[3px] md:rounded-[2rem] md:px-12 dark:border-[#e3c68a]/25">
-        <CanopyVideoBackdrop subtle />
+      <div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-2xl border border-[#b59c6a]/35 bg-[#071209]/40 px-6 py-12 text-[#f5efe0] shadow-[0_24px_64px_rgba(2,8,4,0.72)] md:rounded-[2rem] md:px-12 dark:border-[#e3c68a]/25">
+        <CanopyVideoBackdrop />
 
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
@@ -26,13 +26,13 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="#code"
-              className="rounded-full border border-[#e3c68a]/30 bg-[#0b160c]/65 px-4 py-2 font-mono text-xs text-[#f4e4c1] backdrop-blur transition hover:border-[#e3c68a]/70 hover:text-white"
+              className="rounded-full border border-[#e3c68a]/30 bg-[#0b160c]/75 px-4 py-2 font-mono text-xs text-[#f4e4c1] transition hover:border-[#e3c68a]/70 hover:text-white"
             >
               Verilog RTL
             </a>
             <a
               href="#simulator"
-              className="rounded-full border border-[#e3c68a]/30 bg-[#0b160c]/65 px-4 py-2 font-mono text-xs text-[#f4e4c1] backdrop-blur transition hover:border-[#e3c68a]/70 hover:text-white"
+              className="rounded-full border border-[#e3c68a]/30 bg-[#0b160c]/75 px-4 py-2 font-mono text-xs text-[#f4e4c1] transition hover:border-[#e3c68a]/70 hover:text-white"
             >
               Simulator
             </a>

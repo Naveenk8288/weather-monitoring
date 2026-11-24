@@ -68,23 +68,23 @@
   }
 }
 
-/* Smoked Rainforest & Sunlit Gold Glass Controls (Lighter unblurred clarity on Pages 2..End) */
+/* Smoked Rainforest & Sunlit Gold Controls (Completely Unblurred Clarity on Pages 2..End) */
 @layer components {
   .glass-card {
-    @apply rounded-2xl border border-[#b59c6a]/35 bg-[#faf7ee]/74 shadow-[0_12px_36px_rgba(16,28,16,0.12),inset_0_1px_0_rgba(255,252,240,0.85)] backdrop-blur-[4px]
+    @apply rounded-2xl border border-[#b59c6a]/35 bg-[#faf7ee]/76 shadow-[0_12px_36px_rgba(16,28,16,0.12),inset_0_1px_0_rgba(255,252,240,0.85)]
            dark:border-[#e3c68a]/22 dark:bg-[#08140a]/65 dark:shadow-[0_18px_48px_rgba(2,8,4,0.62),inset_0_1px_0_rgba(247,214,142,0.16)];
   }
 
   .glass-subtle {
-    @apply rounded-xl border border-[#b59c6a]/30 bg-[#f3eee0]/72 backdrop-blur-[2px]
-           dark:border-[#e3c68a]/16 dark:bg-[#0d1c0f]/65;
+    @apply rounded-xl border border-[#b59c6a]/30 bg-[#f3eee0]/72
+           dark:border-[#e3c68a]/16 dark:bg-[#0d1c0f]/60;
   }
 
   .lab-badge {
     @apply inline-flex items-center gap-2 rounded-full border border-[#9e8048]/35
            bg-[#e8cfa0]/20 px-3.5 py-1 font-mono text-[11px] font-semibold tracking-[0.16em]
-           text-[#47381b] uppercase backdrop-blur-md
-           dark:border-[#e3c68a]/35 dark:bg-[#e3c68a]/12 dark:text-[#f1ddb3];
+           text-[#47381b] uppercase
+           dark:border-[#e3c68a]/35 dark:bg-[#0b160c]/75 dark:text-[#f1ddb3];
   }
 
   .lab-btn-primary {
@@ -98,8 +98,8 @@
 
   .lab-btn-secondary {
     @apply inline-flex items-center justify-center gap-2 rounded-full border border-[#8e784c]/35
-           bg-[#faf7ee]/75 px-4 py-2 font-medium text-[#1b2b1c] backdrop-blur-md transition-all hover:border-[#6e5a33]
-           hover:bg-[#f2ecdc] dark:border-[#e3c68a]/25 dark:bg-[#0c160d]/78 dark:text-[#f3ead8]
+           bg-[#faf7ee]/80 px-4 py-2 font-medium text-[#1b2b1c] transition-all hover:border-[#6e5a33]
+           hover:bg-[#f2ecdc] dark:border-[#e3c68a]/25 dark:bg-[#0c160d]/82 dark:text-[#f3ead8]
            dark:hover:border-[#e3c68a]/60 dark:hover:bg-[#e3c68a]/12
            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e3c68a] active:scale-[0.98];
   }

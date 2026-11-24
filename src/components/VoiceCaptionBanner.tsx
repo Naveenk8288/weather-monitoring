@@ -25,7 +25,7 @@ export const VoiceCaptionBanner: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 18, scale: 0.96 }}
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-4 left-4 z-40 w-[min(420px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[#e3c68a]/30 bg-[#0b160c]/94 p-4 text-[#f5efe0] shadow-[0_18px_48px_rgba(4,10,5,0.78),inset_0_1px_0_rgba(245,222,170,0.2)] backdrop-blur-2xl"
+          className="fixed bottom-4 left-4 z-40 w-[min(420px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-[#e3c68a]/30 bg-[#0b160c]/94 p-4 text-[#f5efe0] shadow-[0_18px_48px_rgba(4,10,5,0.78),inset_0_1px_0_rgba(245,222,170,0.2)]"
           role="status"
           aria-live="polite"
         >

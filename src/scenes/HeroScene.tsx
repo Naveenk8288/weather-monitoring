@@ -267,17 +267,17 @@ export const HeroScene: React.FC<HeroSceneProps> = ({
           {!isMobile && (
             <>
               <Html position={[-3.35, 1.05, 0.95]} center distanceFactor={11} zIndexRange={[10, 0]}>
-                <div className="pointer-events-none whitespace-nowrap rounded-md border border-cyan-400/40 bg-slate-950/80 px-2 py-0.5 font-mono text-[10px] text-cyan-300 backdrop-blur">
+                <div className="pointer-events-none whitespace-nowrap rounded-md border border-cyan-400/40 bg-slate-950/86 px-2 py-0.5 font-mono text-[10px] text-cyan-300">
                   DHT11 · 1-Wire
                 </div>
               </Html>
               <Html position={[-3.55, 1.1, -1.25]} center distanceFactor={11} zIndexRange={[10, 0]}>
-                <div className="pointer-events-none whitespace-nowrap rounded-md border border-emerald-400/40 bg-slate-950/80 px-2 py-0.5 font-mono text-[10px] text-emerald-300 backdrop-blur">
+                <div className="pointer-events-none whitespace-nowrap rounded-md border border-emerald-400/40 bg-slate-950/86 px-2 py-0.5 font-mono text-[10px] text-emerald-300">
                   Rain Sensor
                 </div>
               </Html>
               <Html position={[3.65, 1.45, 0.15]} center distanceFactor={11} zIndexRange={[10, 0]}>
-                <div className="pointer-events-none whitespace-nowrap rounded-md border border-purple-400/40 bg-slate-950/80 px-2 py-0.5 font-mono text-[10px] text-purple-300 backdrop-blur">
+                <div className="pointer-events-none whitespace-nowrap rounded-md border border-purple-400/40 bg-slate-950/86 px-2 py-0.5 font-mono text-[10px] text-purple-300">
                   16×2 HD44780 LCD
                 </div>
               </Html>

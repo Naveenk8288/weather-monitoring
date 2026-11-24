@@ -109,26 +109,26 @@ export const WeatherSimulatorSection: React.FC = () => {
 
           {/* Ambient Weather Badges Overlay */}
           <div className="pointer-events-none absolute left-3 top-3 flex flex-wrap gap-1.5">
-            <span className="rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/86 px-3 py-1 font-mono text-[11px] text-[#e8cfa0] backdrop-blur">
+            <span className="rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/88 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]">
               Ambient: {inputs.temp}°C · {inputs.humidity}% · {inputs.rain ? 'RAIN' : 'DRY'}
             </span>
             {inputs.temp >= 40 && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-red-400/50 bg-red-950/85 px-2.5 py-1 font-mono text-[11px] font-bold text-red-300 backdrop-blur">
+              <span className="inline-flex items-center gap-1 rounded-full border border-red-400/50 bg-red-950/88 px-2.5 py-1 font-mono text-[11px] font-bold text-red-300">
                 <Flame className="h-3 w-3" /> Heat Haze
               </span>
             )}
             {inputs.temp <= 10 && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/50 bg-blue-950/85 px-2.5 py-1 font-mono text-[11px] font-bold text-blue-300 backdrop-blur">
+              <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/50 bg-blue-950/88 px-2.5 py-1 font-mono text-[11px] font-bold text-blue-300">
                 <Snowflake className="h-3 w-3" /> Snow &amp; Frost
               </span>
             )}
             {inputs.rain && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-cyan-400/50 bg-cyan-950/85 px-2.5 py-1 font-mono text-[11px] font-bold text-cyan-300 backdrop-blur">
+              <span className="inline-flex items-center gap-1 rounded-full border border-cyan-400/50 bg-cyan-950/88 px-2.5 py-1 font-mono text-[11px] font-bold text-cyan-300">
                 <CloudRain className="h-3 w-3" /> Rainfall
               </span>
             )}
             {inputs.humidity >= 80 && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-[#9e8450]/50 bg-sky-950/85 px-2.5 py-1 font-mono text-[11px] font-bold text-sky-300 backdrop-blur">
+              <span className="inline-flex items-center gap-1 rounded-full border border-[#9e8450]/50 bg-sky-950/88 px-2.5 py-1 font-mono text-[11px] font-bold text-sky-300">
                 <Droplets className="h-3 w-3" /> Dense Fog
               </span>
             )}
@@ -145,7 +145,7 @@ export const WeatherSimulatorSection: React.FC = () => {
             />
           </div>
 
-          <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/86 px-3.5 py-1 font-mono text-[11px] text-[#e8cfa0]/80 backdrop-blur">
+          <div className="pointer-events-none absolute bottom-3 left-3 rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/88 px-3.5 py-1 font-mono text-[11px] text-[#e8cfa0]/80">
             Environment = live sensor input · 3D LCD &amp; LEDs = registered FPGA outputs (posedge clk)
           </div>
         </div>

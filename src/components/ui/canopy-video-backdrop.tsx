@@ -369,22 +369,22 @@ export const CanopyVideoBackdrop: React.FC<CanopyVideoBackdropProps> = ({
         className={cn(
           'h-full w-full object-cover object-center transition-opacity duration-500 will-change-transform',
           !reducedMotion && 'animate-canopy-drift',
-          subtle ? 'opacity-80' : isDark ? 'opacity-95' : 'opacity-65'
+          subtle ? 'opacity-90' : isDark ? 'opacity-100' : 'opacity-80'
         )}
       />
 
       {/* Live 60 FPS Wing-Flapping & Soaring Scarlet Macaw Flock Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
-      {/* Light Atmospheric Contrast Scrim (minimal darkening so foliage & flying birds stay clear) */}
+      {/* Minimal Atmospheric Contrast Scrim (crisp unblurred foliage & vivid flying birds) */}
       <div
         className={cn(
           'absolute inset-0 transition-colors duration-500',
           isDark
             ? subtle
-              ? 'bg-gradient-to-b from-[#050e06]/40 via-[#061208]/25 to-[#040a05]/60'
-              : 'bg-gradient-to-b from-[#050e06]/30 via-[#071409]/15 to-[#040a05]/50'
-            : 'bg-gradient-to-b from-[#f6f2e7]/50 via-[#f2ecdc]/40 to-[#ece6d5]/55'
+              ? 'bg-gradient-to-b from-[#050e06]/25 via-[#061208]/12 to-[#040a05]/45'
+              : 'bg-gradient-to-b from-[#050e06]/20 via-[#071409]/8 to-[#040a05]/35'
+            : 'bg-gradient-to-b from-[#f6f2e7]/35 via-[#f2ecdc]/25 to-[#ece6d5]/40'
         )}
       />
 

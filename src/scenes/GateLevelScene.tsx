@@ -100,7 +100,7 @@ const GateBlock: React.FC<{
         />
       </mesh>
       <Html position={[0, 0, size[2] / 2 + 0.06]} center distanceFactor={11} zIndexRange={[15, 0]}>
-        <div className="pointer-events-none select-none rounded-lg border border-slate-700/80 bg-slate-950/90 px-2 py-1 text-center backdrop-blur">
+        <div className="pointer-events-none select-none rounded-lg border border-slate-700/80 bg-slate-950/92 px-2 py-1 text-center">
           <div className="font-mono text-[10px] font-bold tracking-wide" style={{ color: active ? color : '#94a3b8' }}>
             {title}
           </div>
@@ -271,7 +271,7 @@ export const GateLevelScene: React.FC<GateLevelSceneProps> = ({
           />
         </mesh>
         <Html position={[0, 0, 0.5]} center distanceFactor={11} zIndexRange={[15, 0]}>
-          <div className="pointer-events-none select-none rounded-lg border border-cyan-500/40 bg-slate-950/92 px-2.5 py-1.5 text-center backdrop-blur">
+          <div className="pointer-events-none select-none rounded-lg border border-cyan-500/40 bg-slate-950/92 px-2.5 py-1.5 text-center">
             <div className="font-mono text-[10px] font-bold text-cyan-300">D FLIP-FLOPS</div>
             <div className="font-mono text-[9px] text-slate-400">posedge clk | async rst</div>
             <div className="mt-1 space-y-0.5 font-mono text-[10px]">

@@ -48,7 +48,7 @@ export const HeroSection: React.FC = () => {
       <div className="relative mx-auto flex min-h-[92vh] max-w-[1440px] flex-col justify-between overflow-hidden rounded-2xl border border-[#b59c6a]/40 bg-[#09130a]/88 shadow-[0_24px_68px_rgba(4,10,5,0.72),inset_0_1px_0_rgba(245,222,170,0.2)] md:rounded-[2rem] dark:border-[#e3c68a]/25">
         {/* Full-Bleed Looping Rainforest Video + Transparent 3D FPGA Hardware Backdrop */}
         <div className="absolute inset-0 z-0">
-          <CanopyVideoBackdrop subtle />
+          <CanopyVideoBackdrop />
           <CanvasViewport
             eager
             transparentBg
@@ -66,26 +66,26 @@ export const HeroSection: React.FC = () => {
               scrollProgressRef={scrollProgressRef}
             />
           </CanvasViewport>
-          <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-b from-[#061108]/55 via-transparent to-[#050d06]/85" />
+          <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-b from-[#061108]/25 via-transparent to-[#050d06]/60" />
         </div>
 
         {/* Top Bar inside 3D Bench Frame */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-3 px-5 pt-6 sm:px-8 md:px-12 md:pt-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#e3c68a]/35 bg-[#0b160c]/78 px-3.5 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#f4e4c1] backdrop-blur-md">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#e3c68a]/35 bg-[#0b160c]/82 px-3.5 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#f4e4c1]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#e3c68a]" />
               00 · Interactive 3D Hardware Workbench
             </span>
-            <span className="hidden rounded-full border border-[#e3c68a]/22 bg-[#0b160c]/68 px-3 py-1 font-mono text-[11px] text-[#e8d6b0]/85 backdrop-blur-md sm:inline-block">
+            <span className="hidden rounded-full border border-[#e3c68a]/22 bg-[#0b160c]/74 px-3 py-1 font-mono text-[11px] text-[#e8d6b0]/85 sm:inline-block">
               {PROJECT_META.courseCode} · Artix-7 Basys 3
             </span>
           </div>
 
           <div className="flex flex-wrap gap-2 font-mono text-[11px]">
-            <div className="rounded-full border border-[#e3c68a]/25 bg-[#0b160c]/82 px-3 py-1 text-[#f5efe0] backdrop-blur-md">
+            <div className="rounded-full border border-[#e3c68a]/25 bg-[#0b160c]/86 px-3 py-1 text-[#f5efe0]">
               LCD: <span className="font-semibold text-emerald-300">{lcdLines[0].trim()}</span>
             </div>
-            <div className="rounded-full border border-[#e3c68a]/25 bg-[#0b160c]/82 px-3 py-1 text-[#f5efe0] backdrop-blur-md">
+            <div className="rounded-full border border-[#e3c68a]/25 bg-[#0b160c]/86 px-3 py-1 text-[#f5efe0]">
               COND:{' '}
               <span
                 className={`font-bold ${
@@ -140,7 +140,7 @@ export const HeroSection: React.FC = () => {
 
                 <a
                   href="#overview"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e3c68a]/35 bg-[#0b160c]/75 px-4 py-2.5 font-mono text-xs text-[#f4e4c1] backdrop-blur-md transition hover:border-[#e3c68a]/75 hover:text-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[#e3c68a]/35 bg-[#0b160c]/80 px-4 py-2.5 font-mono text-xs text-[#f4e4c1] transition hover:border-[#e3c68a]/75 hover:text-white"
                 >
                   <span>Scroll to explore</span>
                   <ArrowDown className="h-3.5 w-3.5 animate-bounce text-[#e3c68a]" />

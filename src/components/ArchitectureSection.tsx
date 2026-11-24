@@ -132,11 +132,11 @@ export const ArchitectureSection: React.FC = () => {
 
               {/* Bottom Legend Pill */}
               <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-2">
-                <div className="rounded-full border border-[#e8cfa0]/25 bg-[#09130a]/86 px-3 py-1 font-mono text-[11px] text-[#e8cfa0] backdrop-blur">
+                <div className="rounded-full border border-[#e8cfa0]/25 bg-[#09130a]/88 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]">
                   <Eye className="mr-1.5 inline h-3 w-3" />
                   Hover a block to lift · Click to open RTL drawer
                 </div>
-                <div className="hidden rounded-full border border-[#e8cfa0]/15 bg-[#09130a]/82 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]/70 backdrop-blur sm:block">
+                <div className="hidden rounded-full border border-[#e8cfa0]/15 bg-[#09130a]/86 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]/70 sm:block">
                   Solid arrows = Data Bus · Overhead arcs = Control Handshakes
                 </div>
               </div>
@@ -149,7 +149,7 @@ export const ArchitectureSection: React.FC = () => {
                     animate={{ x: 0, opacity: 1 }}
                     exit={{ x: '100%', opacity: 0.4 }}
                     transition={{ type: 'spring', stiffness: 320, damping: 32 }}
-                    className="absolute inset-y-0 right-0 z-30 flex w-full max-w-md flex-col border-l border-[#b59c6a]/40 bg-white/96 p-5 shadow-2xl backdrop-blur-xl dark:border-[#e8cfa0]/18 dark:bg-[#0a140b]/96"
+                    className="absolute inset-y-0 right-0 z-30 flex w-full max-w-md flex-col border-l border-[#b59c6a]/40 bg-white/96 p-5 shadow-2xl dark:border-[#e8cfa0]/18 dark:bg-[#0a140b]/96"
                     aria-label={`${selectedBlock.name} details`}
                   >
                     <div className="flex items-start justify-between gap-3 border-b border-[#b59c6a]/35 pb-3 dark:border-[#e8cfa0]/12">
