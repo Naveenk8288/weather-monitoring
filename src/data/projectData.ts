@@ -9,8 +9,8 @@ export const PROJECT_META = {
   naacBadge: 'NAAC Accredited Institution',
   facultyGuide: 'Prof B K S V L Varaprasad',
   team: [
-    { name: 'Goutham S', usn: '1GA25AI012', role: 'RTL Architecture & FSM Design' },
     { name: 'Naveena Kanakannanavar', usn: '1GA25AI030', role: 'DHT11 Protocol & Testbench Verification' },
+    { name: 'Goutham S', usn: '1GA25AI012', role: 'RTL Architecture & FSM Design' },
     { name: 'Chetan Kumar', usn: '1GA25AI009', role: 'Condition Decoder & Gate-Level Synthesis' },
     { name: 'Mithun', usn: '1GA26AI405', role: 'LCD Driver FSM & Hardware Integration' }
   ]
