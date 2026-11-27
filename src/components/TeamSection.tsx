@@ -55,11 +55,11 @@ export const TeamSection: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between">
                   {isNaveena ? (
-                    <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-[#8fdfff] shadow-[0_0_14px_rgba(56,189,248,0.55)]">
+                    <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-[#8fdfff] shadow-[0_0_16px_rgba(56,189,248,0.6)]">
                       <img
                         src={NAVEENA_PHOTO_SRC}
                         alt="Naveena Kanakannanavar"
-                        className="h-full w-full scale-[1.2] object-cover object-[45%_44%] transition duration-300 group-hover:scale-[1.3]"
+                        className="h-full w-full scale-[1.26] object-cover object-[45%_42%] transition duration-300 group-hover:scale-[1.34]"
                       />
                     </div>
                   ) : (

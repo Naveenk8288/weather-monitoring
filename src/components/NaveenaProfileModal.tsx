@@ -70,7 +70,7 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
 
             {/* Centered Circular Photo Medallion with Glowing Cyan Ring */}
             <div className="relative z-10 flex flex-col items-center">
-              <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-b from-[#04182b] via-[#061a2e] to-[#041220] shadow-[0_0_55px_rgba(56,189,248,0.28)]">
+              <div className="relative flex h-56 w-56 items-center justify-center rounded-full bg-gradient-to-b from-[#04182b] via-[#061a2e] to-[#041220] shadow-[0_0_64px_rgba(56,189,248,0.3)]">
                 {/* Subtle Orbital Accent Rings */}
                 <svg
                   aria-hidden="true"
@@ -102,11 +102,11 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
                 </svg>
 
                 {/* Glowing White-Cyan Photo Frame */}
-                <div className="relative h-[118px] w-[118px] overflow-hidden rounded-full border-[3px] border-[#b7efff] shadow-[0_0_22px_rgba(56,189,248,0.9),0_0_46px_rgba(56,189,248,0.45)]">
+                <div className="relative h-40 w-40 overflow-hidden rounded-full border-[3.5px] border-[#b7efff] shadow-[0_0_26px_rgba(56,189,248,0.9),0_0_52px_rgba(56,189,248,0.45)]">
                   <img
                     src={NAVEENA_PHOTO_SRC}
                     alt="Naveena Kanakannanavar"
-                    className="h-full w-full scale-[1.22] object-cover object-[45%_44%]"
+                    className="h-full w-full scale-[1.28] object-cover object-[45%_42%]"
                   />
                 </div>
               </div>
