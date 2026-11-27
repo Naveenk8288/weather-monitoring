@@ -404,22 +404,17 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
             }}
           />
           <div
-            className="relative z-10 flex flex-col gap-1.5"
+            className="relative z-10 flex flex-col items-center gap-1.5 text-center"
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
-              fontSize: 'clamp(0.76rem, calc(10.8 * var(--p)), 0.98rem)',
-              lineHeight: 1.5
+              fontSize: 'clamp(0.92rem, calc(13.2 * var(--p)), 1.18rem)',
+              lineHeight: 1.48
             }}
           >
-            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-1 sm:justify-between">
-              <span className="text-black-glossy-sharp font-bold tracking-[0.015em]">
-                DHT11 Protocol &amp; Testbench Verification ·
-              </span>
-              <span className="text-black-glossy-sharp font-bold tracking-[0.015em]">
-                Global Academy of Technology, Bengaluru
-              </span>
-            </div>
-            <p className="text-black-glossy-sharp text-center font-bold tracking-[0.015em]">
+            <p className="text-black-glossy-sharp font-extrabold tracking-[0.01em]">
+              Project Role: DHT11 Protocol &amp; Testbench Verification.
+            </p>
+            <p className="text-black-glossy-sharp font-bold tracking-[0.01em]">
               FPGA-Based Weather Condition Detector and Alert System Using Verilog HDL.
             </p>
           </div>
