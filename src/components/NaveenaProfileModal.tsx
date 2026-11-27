@@ -31,7 +31,7 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
   const badgeRef = useRef<HTMLDivElement | null>(null);
   const line1Ref = useRef<HTMLSpanElement | null>(null);
   const line2Ref = useRef<HTMLSpanElement | null>(null);
-  const sublineRef = useRef<HTMLParagraphElement | null>(null);
+  const sublineRef = useRef<HTMLDivElement | null>(null);
   const btn1Ref = useRef<HTMLButtonElement | null>(null);
   const btn2Ref = useRef<HTMLButtonElement | null>(null);
 
@@ -338,59 +338,85 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
           </div>
         </div>
 
-        {/* Ember-Glass Pill Badge (White Chip + DDCO Project Title + #FAD53E Sun Icon) */}
+        {/* Ember-Glass Pill Badge (Silver Glossy Stylish Font for USN + DDCO Project Title) */}
         <div
           ref={badgeRef}
-          className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[#ff9d4d]/40 px-2.5 py-1.5 shadow-[0_0_28px_rgba(220,110,40,0.28)]"
+          className="inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-[#d6e0f0]/40 px-2.5 py-1.5 shadow-[0_0_28px_rgba(220,110,40,0.32),inset_0_1px_0_rgba(255,255,255,0.35)]"
           style={{ backgroundColor: 'rgba(220, 110, 40, 0.16)' }}
         >
-          <span className="rounded-full bg-white px-3 py-0.5 text-[11px] font-normal tracking-wide text-[#030103] sm:text-xs">
-            1GA25AI030
+          <span
+            className="rounded-full border border-white/35 bg-black/85 px-3 py-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]"
+            style={{ fontFamily: "'Cinzel', serif" }}
+          >
+            <span className="text-silver-glossy text-[11px] font-bold tracking-[0.14em] sm:text-xs">
+              1GA25AI030
+            </span>
           </span>
-          <span className="px-1 text-[11px] tracking-[0.02em] text-white sm:text-xs">
+          <span
+            className="text-silver-glossy px-1.5 text-[11px] font-bold tracking-[0.06em] sm:text-xs"
+            style={{ fontFamily: "'Cinzel', serif" }}
+          >
             Digital Design and Computer Organization Project
           </span>
           <Sun className="mr-1 h-4 w-4 shrink-0" style={{ color: '#FAD53E' }} />
         </div>
 
-        {/* Clipped Two-Line Display Headline */}
+        {/* Clipped Two-Line Display Headline (Silver Glossy Stylish Font) */}
         <h1
-          className="mt-4 font-normal tracking-[-0.01em] text-white sm:mt-5"
+          className="mt-4 sm:mt-5"
           style={{
-            fontSize: 'clamp(1.75rem, calc(36 * var(--p)), 3.6rem)',
-            lineHeight: 'clamp(2.15rem, calc(45 * var(--p)), 4.35rem)'
+            fontFamily: "'Cinzel', 'Cormorant Garamond', serif",
+            fontSize: 'clamp(1.7rem, calc(35 * var(--p)), 3.45rem)',
+            lineHeight: 'clamp(2.15rem, calc(44 * var(--p)), 4.25rem)'
           }}
         >
           <span className="block overflow-hidden">
-            <span ref={line1Ref} className="block">
+            <span
+              ref={line1Ref}
+              className="text-silver-glossy-shimmer block font-bold tracking-[0.04em]"
+            >
               Naveena Kanakannanavar
             </span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="mt-1 block overflow-hidden">
             <span
               ref={line2Ref}
-              className="block text-white/90"
-              style={{ fontSize: 'clamp(1.1rem, calc(22 * var(--p)), 2.25rem)' }}
+              className="text-silver-glossy block font-semibold tracking-[0.05em]"
+              style={{ fontSize: 'clamp(1.02rem, calc(20 * var(--p)), 2rem)' }}
             >
               Artificial Intelligence and Machine Learning
             </span>
           </span>
         </h1>
 
-        {/* Subline */}
-        <p
+        {/* Sharp Piano-Black Glossy Details Plate */}
+        <div
           ref={sublineRef}
-          className="mt-3 max-w-2xl text-white/80 sm:mt-4"
-          style={{
-            fontSize: 'clamp(0.82rem, calc(11.2 * var(--p)), 1.05rem)',
-            lineHeight: 1.55
-          }}
+          className="black-glossy-plate mt-4 max-w-2xl overflow-hidden rounded-2xl px-5 py-3 sm:mt-5 sm:px-6 sm:py-3.5"
         >
-          DHT11 Protocol &amp; Testbench Verification · Course BAML24303 · Global Academy of
-          Technology, Bengaluru
-          <br className="hidden sm:inline" /> FPGA-Based Weather Condition Detector and Alert System
-          Using Verilog HDL.
-        </p>
+          {/* Crisp Top Gloss Highlight Reflection */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 top-0 h-1/2"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.06) 100%)'
+            }}
+          />
+          <p
+            className="text-black-glossy-sharp relative z-10 font-bold tracking-[0.015em]"
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              fontSize: 'clamp(0.76rem, calc(10.8 * var(--p)), 0.98rem)',
+              lineHeight: 1.55
+            }}
+          >
+            DHT11 Protocol &amp; Testbench Verification · Course BAML24303 · Global Academy of
+            Technology, Bengaluru
+            <br />
+            FPGA-Based Weather Condition Detector and Alert System Using Verilog HDL.
+          </p>
+        </div>
 
         {/* Action Pill Buttons */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3.5 sm:mt-7">
