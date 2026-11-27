@@ -6,17 +6,26 @@ import {
   ChevronUp,
   CloudRain,
   ExternalLink,
+  LocateFixed,
+  RefreshCw,
   RotateCcw,
   Sliders
 } from 'lucide-react';
 import { useSimulator } from '../context/SimulatorContext';
 
 /**
- * Sticky floating Live Weather Simulator dock styled in Smoked-Forest & Champagne Gold Glass.
+ * Sticky floating Live Weather Simulator dock styled in Smoked-Forest & Champagne Gold.
  */
 export const StickySimulatorBar: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   const {
+    mode,
+    setMode,
+    liveStatus,
+    liveLocation,
+    liveReading,
+    detectMyLocation,
+    refreshLiveWeather,
     inputs,
     setTemp,
     setHumidity,
@@ -41,16 +50,58 @@ export const StickySimulatorBar: React.FC = () => {
           >
             <div className="mb-3 flex items-center justify-between border-b border-[#e3c68a]/15 pb-2">
               <div className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-[#ebd29d]">
-                Quick FPGA Simulator
+                {mode === 'live' ? `Live · ${liveLocation.name}` : 'Quick FPGA Simulator'}
               </div>
               <a
                 href="#simulator"
                 onClick={() => setExpanded(false)}
                 className="inline-flex items-center gap-1 font-mono text-[10px] text-[#e3c68a]/70 hover:text-white"
               >
-                3D Chamber <ExternalLink className="h-3 w-3" />
+                City Search <ExternalLink className="h-3 w-3" />
               </a>
             </div>
+
+            {/* Live Weather Quick Toggle + GPS */}
+            <div className="mb-3 flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={() => setMode(mode === 'live' ? 'manual' : 'live')}
+                className={`flex-1 rounded-full border px-2.5 py-1 font-mono text-[10px] font-bold transition ${
+                  mode === 'live'
+                    ? 'border-emerald-400/50 bg-emerald-500/20 text-emerald-300'
+                    : 'border-[#e3c68a]/25 bg-[#122214] text-[#f4e4c1] hover:border-[#e3c68a]/60'
+                }`}
+              >
+                {mode === 'live' ? '● LIVE FEED ON' : 'Switch to Live'}
+              </button>
+              <button
+                type="button"
+                onClick={() => void detectMyLocation()}
+                title="Use my browser GPS location"
+                className="rounded-full border border-[#e3c68a]/25 bg-[#122214] px-2.5 py-1 font-mono text-[10px] text-[#f4e4c1] transition hover:border-[#e3c68a]/65"
+              >
+                <LocateFixed className="inline h-3 w-3 text-emerald-400" /> GPS
+              </button>
+              <button
+                type="button"
+                onClick={() => void refreshLiveWeather()}
+                title="Refresh live weather"
+                className="rounded-full border border-[#e3c68a]/25 bg-[#122214] p-1 text-[#f4e4c1] transition hover:border-[#e3c68a]/65"
+              >
+                <RefreshCw
+                  className={`h-3 w-3 ${
+                    liveStatus === 'loading' || liveStatus === 'locating' ? 'animate-spin' : ''
+                  }`}
+                />
+              </button>
+            </div>
+
+            {mode === 'live' && liveReading && (
+              <div className="mb-3 rounded-xl border border-emerald-400/20 bg-[#0d1c10] px-2.5 py-1.5 font-mono text-[10px] text-[#ede3cd]/85">
+                {liveReading.weatherLabel} · {liveReading.temperatureC.toFixed(1)}°C ·{' '}
+                {liveReading.windKmh.toFixed(0)} km/h wind
+              </div>
+            )}
 
             <div className="space-y-3 text-xs">
               <div>
@@ -145,8 +196,13 @@ export const StickySimulatorBar: React.FC = () => {
           aria-expanded={expanded}
           aria-label="Toggle live weather simulator quick panel"
         >
-          <Sliders className="h-3.5 w-3.5 text-[#e3c68a]" />
+          {mode === 'live' ? (
+            <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" title="Live weather active" />
+          ) : (
+            <Sliders className="h-3.5 w-3.5 text-[#e3c68a]" />
+          )}
           <span className="font-semibold text-[#f7f0e2]">
+            {mode === 'live' ? `${liveLocation.name} · ` : ''}
             {registered.latchedTemp}°C/{registered.latchedHumidity}%
           </span>
           <span

@@ -15,7 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const HeroSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const scrollProgressRef = useRef<number>(0);
-  const { lcdLines, registered, clockPulseId } = useSimulator();
+  const { mode, liveLocation, liveReading, lcdLines, registered, clockPulseId } = useSimulator();
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -37,7 +37,10 @@ export const HeroSection: React.FC = () => {
   }, []);
 
   const ledHeat = registered.tempStatus === '10';
-  const heroVoiceScript = `Welcome to the 3D Basys 3 FPGA Weather Condition Detector workbench. At the center floats the Xilinx Artix-7 XC7A35T Basys 3 board with its 16 slide switches, status LEDs, 7-segment display, center reset pushbutton, and PMOD expansion headers. On the left, the blue DHT11 digital sensor streams 40-bit temperature and humidity packets over a single bidirectional wire, while the gold-plated rain sensor module detects active rainfall. On the right, the 16 by 2 HD44780 LCD displays the latched FPGA output: currently reading ${registered.latchedTemp} degrees Celsius and ${registered.latchedHumidity} percent humidity, classified as ${registered.tempLabel}. All decision logic runs in pure synthesizable Verilog HDL inside the FPGA fabric with deterministic hardware timing.`;
+  const heroVoiceScript =
+    mode === 'live' && liveReading
+      ? `Welcome to the 3D Basys 3 FPGA Weather Condition Detector workbench, currently monitoring live real-world weather in ${liveLocation.name}. Live telemetry reports ${liveReading.temperatureC.toFixed(1)} degrees Celsius, ${Math.round(liveReading.humidityPct)} percent humidity, and ${liveReading.weatherLabel}. At the center floats the Xilinx Artix-7 XC7A35T Basys 3 board. On the left, the blue DHT11 digital sensor streams 40-bit temperature and humidity packets over a single bidirectional wire, while the gold-plated rain sensor detects active rainfall. On the right, the 16 by 2 HD44780 LCD displays the latched FPGA output: ${registered.latchedTemp} degrees Celsius and ${registered.latchedHumidity} percent humidity, classified as ${registered.tempLabel}. Scroll to the Live Weather Monitor to lock onto your GPS or search any city worldwide.`
+      : `Welcome to the 3D Basys 3 FPGA Weather Condition Detector workbench. At the center floats the Xilinx Artix-7 XC7A35T Basys 3 board with its 16 slide switches, status LEDs, 7-segment display, center reset pushbutton, and PMOD expansion headers. On the left, the blue DHT11 digital sensor streams 40-bit temperature and humidity packets over a single bidirectional wire, while the gold-plated rain sensor module detects active rainfall. On the right, the 16 by 2 HD44780 LCD displays the latched FPGA output: currently reading ${registered.latchedTemp} degrees Celsius and ${registered.latchedHumidity} percent humidity, classified as ${registered.tempLabel}. All decision logic runs in pure synthesizable Verilog HDL inside the FPGA fabric with deterministic hardware timing.`;
 
   return (
     <section
@@ -82,6 +85,20 @@ export const HeroSection: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap gap-2 font-mono text-[11px]">
+            <a
+              href="#simulator"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#e3c68a]/30 bg-[#0b160c]/86 px-3 py-1 text-[#f5efe0] transition hover:border-[#e3c68a]/75"
+              title="Jump to Live Weather Monitor & City Search"
+            >
+              <span
+                className={`h-2 w-2 rounded-full ${
+                  mode === 'live' ? 'animate-pulse bg-emerald-400' : 'bg-amber-400'
+                }`}
+              />
+              {mode === 'live' && liveReading
+                ? `LIVE · ${liveLocation.name} (${liveReading.temperatureC.toFixed(1)}°C)`
+                : 'MANUAL LAB'}
+            </a>
             <div className="rounded-full border border-[#e3c68a]/25 bg-[#0b160c]/86 px-3 py-1 text-[#f5efe0]">
               LCD: <span className="font-semibold text-emerald-300">{lcdLines[0].trim()}</span>
             </div>

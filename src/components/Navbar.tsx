@@ -19,7 +19,7 @@ const NAV_LINKS = [
 
 export const Navbar: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
-  const { registered, pendingUpdate } = useSimulator();
+  const { mode, liveLocation, registered, pendingUpdate } = useSimulator();
   const [scrollPct, setScrollPct] = useState(0);
   const [pastLandingHero, setPastLandingHero] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -87,8 +87,13 @@ export const Navbar: React.FC = () => {
               href="#simulator"
               className="hidden items-center gap-1.5 rounded-full border border-[#e3c68a]/30 bg-[#e3c68a]/12 px-3 py-1 font-mono text-[11px] font-medium text-[#f4e4c1] transition hover:bg-[#e3c68a]/22 sm:inline-flex"
             >
-              <Sliders className="h-3 w-3 text-[#e3c68a]" />
+              {mode === 'live' ? (
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+              ) : (
+                <Sliders className="h-3 w-3 text-[#e3c68a]" />
+              )}
               <span>
+                {mode === 'live' ? `${liveLocation.name} · ` : ''}
                 {registered.tempLabel} ({registered.tempStatus})
               </span>
               {pendingUpdate && (

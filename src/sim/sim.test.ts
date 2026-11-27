@@ -20,6 +20,12 @@ import {
   getDht11Snapshot,
   DHT11_TOTAL_STEPS
 } from './dht11Sim';
+import {
+  decodeWmoWeather,
+  formatCoords,
+  isRainWmoCode,
+  mapLiveWeatherToFpgaInputs
+} from '../services/liveWeather';
 
 describe('Weather Condition Decoder & Registered Outputs (Verilog exact)', () => {
   it('decodes boundary temperatures precisely: >=40 HOT(10), <=10 COLD(00), 11..39 NORMAL(01)', () => {
@@ -158,5 +164,51 @@ describe('DHT11 Single-Wire Protocol & Checksum Simulator', () => {
     const finalSnap = getDht11Snapshot(badFrame, DHT11_TOTAL_STEPS);
     expect(finalSnap.phase).toBe('S_ERROR_RETURN_IDLE');
     expect(finalSnap.dataReady).toBe(false);
+  });
+});
+
+describe('Live Weather Telemetry -> FPGA Input Mapping', () => {
+  it('maps real-world readings cleanly into 8-bit DHT11 and 1-bit rain_in inputs', () => {
+    const mapped = mapLiveWeatherToFpgaInputs({
+      temperatureC: 29.4,
+      humidityPct: 81.6,
+      rainMm: 0,
+      precipitationMm: 0,
+      weatherCode: 3
+    });
+
+    expect(mapped.fpgaInputs).toEqual({ temp: 29, humidity: 82, rain: false });
+    expect(mapped.tempClamped).toBe(false);
+    expect(mapped.isRaining).toBe(false);
+
+    const decoded = evaluateCombinational(mapped.fpgaInputs);
+    expect(decoded.tempStatus).toBe('01');
+    expect(decoded.humidityAlert).toBe(true);
+    expect(decoded.rainAlert).toBe(false);
+  });
+
+  it('clamps sub-zero winter temperatures to 0°C (COLD 00) and detects rain via mm or WMO code', () => {
+    const freezing = mapLiveWeatherToFpgaInputs({
+      temperatureC: -6.3,
+      humidityPct: 91,
+      rainMm: 0,
+      weatherCode: 73
+    });
+    expect(freezing.fpgaInputs).toEqual({ temp: 0, humidity: 91, rain: false });
+    expect(freezing.tempClamped).toBe(true);
+    expect(evaluateCombinational(freezing.fpgaInputs).tempStatus).toBe('00');
+
+    const storm = mapLiveWeatherToFpgaInputs({
+      temperatureC: 42.2,
+      humidityPct: 86,
+      rainMm: 0,
+      weatherCode: 95
+    });
+    expect(storm.fpgaInputs).toEqual({ temp: 42, humidity: 86, rain: true });
+    expect(storm.isRaining).toBe(true);
+    expect(isRainWmoCode(95)).toBe(true);
+    expect(isRainWmoCode(3)).toBe(false);
+    expect(decodeWmoWeather(95)).toBe('Thunderstorm');
+    expect(formatCoords(12.926, -21.9426)).toBe('12.93°N, 21.94°W');
   });
 });

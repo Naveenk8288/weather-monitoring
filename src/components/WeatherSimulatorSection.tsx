@@ -12,6 +12,7 @@ import {
   Zap
 } from 'lucide-react';
 import { LightningVoiceButton } from '@/components/ui/lightning-voice-button';
+import { LiveWeatherBar } from './LiveWeatherBar';
 import { SectionWrapper } from './SectionWrapper';
 import { CanvasViewport } from '../scenes/CanvasViewport';
 import { WeatherSimScene } from '../scenes/WeatherSimScene';
@@ -20,6 +21,9 @@ import { REPORT_PRESETS } from '../sim/weatherLogic';
 
 export const WeatherSimulatorSection: React.FC = () => {
   const {
+    mode,
+    liveLocation,
+    liveReading,
     inputs,
     setTemp,
     setHumidity,
@@ -42,10 +46,13 @@ export const WeatherSimulatorSection: React.FC = () => {
   return (
     <SectionWrapper
       id="simulator"
-      badge="06 · Flagship Interactive Feature"
-      title="Live 3D FPGA Weather Simulator"
-      subtitle="Adjust ambient temperature, humidity, and rainfall—then step the FPGA clock to watch registered outputs update strictly on the rising clock edge (posedge clk), or hit Reset to test immediate asynchronous recovery."
+      badge="06 · Live Real-World + FPGA Lab"
+      title="Live 3D FPGA Weather Monitor & Simulator"
+      subtitle="Monitor real-time weather from your GPS location or any city worldwide directly on the 3D Basys 3 FPGA, or switch to Manual mode to stage inputs and observe rising-edge (posedge clk) synchronous latching."
     >
+      {/* Live Real-World Weather Feed (Auto GPS + City Search + Live/Manual Toggle) */}
+      <LiveWeatherBar />
+
       {/* 4 Official Report Scenario Preset Buttons (+ 41C/82% Timing Frame) */}
       <div className="mb-6">
         <div className="mb-2.5 flex flex-wrap items-center justify-between gap-2">
@@ -109,8 +116,13 @@ export const WeatherSimulatorSection: React.FC = () => {
 
           {/* Ambient Weather Badges Overlay */}
           <div className="pointer-events-none absolute left-3 top-3 flex flex-wrap gap-1.5">
-            <span className="rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/88 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]">
-              Ambient: {inputs.temp}°C · {inputs.humidity}% · {inputs.rain ? 'RAIN' : 'DRY'}
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#e8cfa0]/20 bg-[#09130a]/88 px-3 py-1 font-mono text-[11px] text-[#e8cfa0]">
+              {mode === 'live' && (
+                <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+              )}
+              {mode === 'live' && liveReading
+                ? `LIVE · ${liveLocation.name}: ${liveReading.temperatureC.toFixed(1)}°C · ${Math.round(liveReading.humidityPct)}% · ${inputs.rain ? 'RAIN' : 'DRY'}`
+                : `Manual: ${inputs.temp}°C · ${inputs.humidity}% · ${inputs.rain ? 'RAIN' : 'DRY'}`}
             </span>
             {inputs.temp >= 40 && (
               <span className="inline-flex items-center gap-1 rounded-full border border-red-400/50 bg-red-950/88 px-2.5 py-1 font-mono text-[11px] font-bold text-red-300">
@@ -141,7 +153,11 @@ export const WeatherSimulatorSection: React.FC = () => {
               sceneId="weather-sim-3d"
               sceneTitle="Live 3D Basys 3 Weather Simulator"
               label="Explain 3D Sim"
-              script={`You are viewing the live 3D Basys 3 Weather Chamber. Right now the ambient chamber sensors see ${inputs.temp} degrees Celsius, ${inputs.humidity} percent humidity, and ${inputs.rain ? 'active rainfall' : 'dry weather'}. Because our Verilog outputs are synchronous edge-triggered registers, the 3D 16 by 2 LCD and the red heat, blue humidity, and cyan rain alert LEDs update only on the rising edge of the clock. Currently the registered FPGA output holds ${registered.tempLabel}, binary ${registered.tempStatus}, with humidity alert ${registered.humidityAlert ? 'active' : 'off'} and rain alert ${registered.rainAlert ? 'active' : 'off'}. ${pendingUpdate ? 'Notice that your new inputs are pending—click Step Clock to latch them into the Basys 3 registers, or press Reset to asynchronously force NORMAL 01 and clear all alerts immediately.' : 'All outputs are currently synchronized with the sensor inputs. Try switching presets or moving sliders to observe the rising-edge clock delay.'}`}
+              script={
+                mode === 'live' && liveReading
+                  ? `You are viewing the live 3D Basys 3 Weather Monitor, currently tracking real-time atmospheric telemetry from ${liveLocation.name}. Open-Meteo reports ${liveReading.temperatureC.toFixed(1)} degrees Celsius, ${Math.round(liveReading.humidityPct)} percent relative humidity, ${liveReading.weatherLabel}, and ${liveReading.isRaining ? 'active rainfall' : 'dry conditions'}. Our FPGA quantizes those values onto its 8-bit DHT11 and 1-bit rain sensor buses and latches them on the rising edge of the clock. Right now the registered Basys 3 output holds ${registered.tempLabel}, binary ${registered.tempStatus}, with humidity alert ${registered.humidityAlert ? 'active' : 'off'} and rain alert ${registered.rainAlert ? 'active' : 'off'}. You can search any city worldwide, lock onto your browser GPS, or move any slider to switch into manual clock-stepping mode.`
+                  : `You are viewing the live 3D Basys 3 Weather Chamber in manual mode. Right now the ambient chamber sensors see ${inputs.temp} degrees Celsius, ${inputs.humidity} percent humidity, and ${inputs.rain ? 'active rainfall' : 'dry weather'}. Because our Verilog outputs are synchronous edge-triggered registers, the 3D 16 by 2 LCD and the red heat, blue humidity, and cyan rain alert LEDs update only on the rising edge of the clock. Currently the registered FPGA output holds ${registered.tempLabel}, binary ${registered.tempStatus}, with humidity alert ${registered.humidityAlert ? 'active' : 'off'} and rain alert ${registered.rainAlert ? 'active' : 'off'}. ${pendingUpdate ? 'Notice that your new inputs are pending—click Step Clock to latch them into the Basys 3 registers, or press Reset to asynchronously force NORMAL 01 and clear all alerts immediately.' : 'All outputs are currently synchronized with the sensor inputs. Try switching presets or clicking Live Weather Feed to monitor real-world cities.'}`
+              }
             />
           </div>
 
