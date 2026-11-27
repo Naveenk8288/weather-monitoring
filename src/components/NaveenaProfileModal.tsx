@@ -227,10 +227,21 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
         />
       </div>
 
+      {/* Always-Visible Top-Right Corner Close Button (Desktop & Mobile) */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close profile"
+        title="Close profile (Esc)"
+        className="fixed right-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-black/80 text-white shadow-[0_8px_28px_rgba(0,0,0,0.75)] transition duration-200 hover:scale-105 hover:border-[#ff9646] hover:bg-white hover:text-[#030103] hover:shadow-[0_0_24px_rgba(255,150,40,0.75)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff9646] sm:right-6 sm:top-5"
+      >
+        <X className="h-5 w-5" />
+      </button>
+
       {/* Top Navigation Bar (Pinned to Top) */}
       <header
         ref={navRef}
-        className="absolute inset-x-0 top-0 z-30 mx-auto flex w-full max-w-[1380px] items-center justify-between px-5 py-4 sm:px-8 md:px-12 md:py-6"
+        className="absolute inset-x-0 top-0 z-30 mx-auto flex w-full max-w-[1380px] items-center justify-between py-4 pl-5 pr-16 sm:pl-8 sm:pr-20 md:py-6 md:pl-12 md:pr-24"
       >
         {/* Left: Round White Logo Mark with Four-Point Sparkle Cut-Out + Name */}
         <button
