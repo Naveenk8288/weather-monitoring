@@ -48,14 +48,14 @@ export const TeamSection: React.FC = () => {
               aria-label={isNaveena ? 'Open Naveena Kanakannanavar profile card' : undefined}
               className={`glass-card flex flex-col justify-between p-5 transition ${
                 isNaveena
-                  ? 'group cursor-pointer hover:-translate-y-1 hover:border-[#6b9bff]/75 hover:shadow-[0_16px_40px_rgba(56,189,248,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6b9bff]'
+                  ? 'group cursor-pointer hover:-translate-y-1 hover:border-[#ff9646]/75 hover:shadow-[0_16px_40px_rgba(255,150,40,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff9646]'
                   : 'hover:border-black/35 dark:hover:border-[#e8cfa0]/45'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
                   {isNaveena ? (
-                    <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-[#8fdfff] shadow-[0_0_16px_rgba(56,189,248,0.6)]">
+                    <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-[#ffd89b] shadow-[0_0_16px_rgba(255,150,40,0.65)]">
                       <img
                         src={NAVEENA_PHOTO_SRC}
                         alt="Naveena Kanakannanavar"
@@ -87,7 +87,7 @@ export const TeamSection: React.FC = () => {
                   <span>Dept. of AI &amp; ML</span>
                 </span>
                 {isNaveena && (
-                  <span className="rounded-full border border-[#6b9bff]/45 bg-[#122244]/85 px-2.5 py-0.5 font-semibold text-[#9bb8ff] transition group-hover:border-[#9be7ff] group-hover:text-white">
+                  <span className="rounded-full border border-[#ff9646]/50 bg-[#2b1003]/85 px-2.5 py-0.5 font-semibold text-[#ffd39b] transition group-hover:border-[#ffd89b] group-hover:bg-[#ff9646]/30 group-hover:text-white">
                     View Profile
                   </span>
                 )}
