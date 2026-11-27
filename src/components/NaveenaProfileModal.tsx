@@ -389,33 +389,40 @@ export const NaveenaProfileModal: React.FC<NaveenaProfileModalProps> = ({ isOpen
           </span>
         </h1>
 
-        {/* Sharp Piano-Black Glossy Details Plate */}
+        {/* Light-Blurred White Glass Plate with Sharp Black Glossy Typography */}
         <div
           ref={sublineRef}
-          className="black-glossy-plate mt-4 max-w-2xl overflow-hidden rounded-2xl px-5 py-3 sm:mt-5 sm:px-6 sm:py-3.5"
+          className="black-glossy-plate mt-4 w-full max-w-[740px] overflow-hidden rounded-2xl px-5 py-3.5 sm:mt-5 sm:px-7 sm:py-4"
         >
-          {/* Crisp Top Gloss Highlight Reflection */}
+          {/* Subtle Top Glass Specular Sheen */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 top-0 h-1/2"
             style={{
               background:
-                'linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.06) 100%)'
+                'linear-gradient(180deg, rgba(255,255,255,0.38) 0%, rgba(255,255,255,0.04) 100%)'
             }}
           />
-          <p
-            className="text-black-glossy-sharp relative z-10 font-bold tracking-[0.015em]"
+          <div
+            className="relative z-10 flex flex-col gap-1.5"
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontSize: 'clamp(0.76rem, calc(10.8 * var(--p)), 0.98rem)',
-              lineHeight: 1.55
+              lineHeight: 1.5
             }}
           >
-            DHT11 Protocol &amp; Testbench Verification · Course BAML24303 · Global Academy of
-            Technology, Bengaluru
-            <br />
-            FPGA-Based Weather Condition Detector and Alert System Using Verilog HDL.
-          </p>
+            <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-1 sm:justify-between">
+              <span className="text-black-glossy-sharp font-bold tracking-[0.015em]">
+                DHT11 Protocol &amp; Testbench Verification ·
+              </span>
+              <span className="text-black-glossy-sharp font-bold tracking-[0.015em]">
+                Global Academy of Technology, Bengaluru
+              </span>
+            </div>
+            <p className="text-black-glossy-sharp text-center font-bold tracking-[0.015em]">
+              FPGA-Based Weather Condition Detector and Alert System Using Verilog HDL.
+            </p>
+          </div>
         </div>
 
         {/* Action Pill Buttons */}
