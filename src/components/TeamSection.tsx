@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Building2, GraduationCap, MapPin, UserCheck, Users } from 'lucide-react';
 import { SectionWrapper } from './SectionWrapper';
+import { NaveenaProfileModal } from './NaveenaProfileModal';
 import { PROJECT_META } from '../data/projectData';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
+const NAVEENA_USN = '1GA25AI030';
+const NAVEENA_PHOTO_SRC = `${import.meta.env.BASE_URL}naveena-photo.jpg`;
+
 export const TeamSection: React.FC = () => {
   const reducedMotion = useReducedMotion();
+  const [naveenaOpen, setNaveenaOpen] = useState(false);
 
   return (
     <SectionWrapper
@@ -17,41 +22,83 @@ export const TeamSection: React.FC = () => {
     >
       {/* 4 Student Team Cards */}
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {PROJECT_META.team.map((member, idx) => (
-          <motion.div
-            key={member.usn}
-            initial={reducedMotion ? false : { opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.4, delay: idx * 0.08 }}
-            className="glass-card flex flex-col justify-between p-5 transition hover:border-black/35 dark:hover:border-[#e8cfa0]/45"
-          >
-            <div>
-              <div className="flex items-center justify-between">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b59c6a]/40 bg-black font-mono text-xs font-bold text-[#e8cfa0] dark:border-[#e8cfa0]/25 dark:bg-[#e5c78a] dark:text-[#0c160d]">
-                  {member.name
-                    .split(' ')
-                    .map((n) => n[0])
-                    .join('')
-                    .slice(0, 2)
-                    .toUpperCase()}
+        {PROJECT_META.team.map((member, idx) => {
+          const isNaveena = member.usn === NAVEENA_USN;
+
+          return (
+            <motion.div
+              key={member.usn}
+              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              role={isNaveena ? 'button' : undefined}
+              tabIndex={isNaveena ? 0 : undefined}
+              onClick={isNaveena ? () => setNaveenaOpen(true) : undefined}
+              onKeyDown={
+                isNaveena
+                  ? (e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        setNaveenaOpen(true);
+                      }
+                    }
+                  : undefined
+              }
+              aria-label={isNaveena ? 'Open Naveena Kanakannanavar profile card' : undefined}
+              className={`glass-card flex flex-col justify-between p-5 transition ${
+                isNaveena
+                  ? 'group cursor-pointer hover:-translate-y-1 hover:border-[#6b9bff]/75 hover:shadow-[0_16px_40px_rgba(56,189,248,0.22)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6b9bff]'
+                  : 'hover:border-black/35 dark:hover:border-[#e8cfa0]/45'
+              }`}
+            >
+              <div>
+                <div className="flex items-center justify-between">
+                  {isNaveena ? (
+                    <div className="h-11 w-11 overflow-hidden rounded-full border-2 border-[#8fdfff] shadow-[0_0_14px_rgba(56,189,248,0.55)]">
+                      <img
+                        src={NAVEENA_PHOTO_SRC}
+                        alt="Naveena Kanakannanavar"
+                        className="h-full w-full scale-[1.2] object-cover object-[45%_44%] transition duration-300 group-hover:scale-[1.3]"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b59c6a]/40 bg-black font-mono text-xs font-bold text-[#e8cfa0] dark:border-[#e8cfa0]/25 dark:bg-[#e5c78a] dark:text-[#0c160d]">
+                      {member.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')
+                        .slice(0, 2)
+                        .toUpperCase()}
+                    </div>
+                  )}
+                  <span className="rounded-full border border-[#b59c6a]/40 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-slate-800 dark:border-[#e8cfa0]/20 dark:text-[#e8cfa0]">
+                    {member.usn}
+                  </span>
                 </div>
-                <span className="rounded-full border border-[#b59c6a]/40 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-slate-800 dark:border-[#e8cfa0]/20 dark:text-[#e8cfa0]">
-                  {member.usn}
-                </span>
+                <h3 className="mt-4 text-base font-medium tracking-[-0.02em] text-slate-900 dark:text-[#e8cfa0]">
+                  {member.name}
+                </h3>
+                <p className="mt-1 text-xs text-slate-600 dark:text-[#e8cfa0]/65">{member.role}</p>
               </div>
-              <h3 className="mt-4 text-base font-medium tracking-[-0.02em] text-slate-900 dark:text-[#e8cfa0]">
-                {member.name}
-              </h3>
-              <p className="mt-1 text-xs text-slate-600 dark:text-[#e8cfa0]/65">{member.role}</p>
-            </div>
-            <div className="mt-4 flex items-center gap-1.5 border-t border-[#b59c6a]/35 pt-3 font-mono text-[10px] text-slate-500 dark:border-[#e8cfa0]/12 dark:text-[#e8cfa0]/55">
-              <Users className="h-3.5 w-3.5 text-emerald-500" />
-              <span>Dept. of AI &amp; ML</span>
-            </div>
-          </motion.div>
-        ))}
+              <div className="mt-4 flex items-center justify-between gap-1.5 border-t border-[#b59c6a]/35 pt-3 font-mono text-[10px] text-slate-500 dark:border-[#e8cfa0]/12 dark:text-[#e8cfa0]/55">
+                <span className="inline-flex items-center gap-1.5">
+                  <Users className="h-3.5 w-3.5 text-emerald-500" />
+                  <span>Dept. of AI &amp; ML</span>
+                </span>
+                {isNaveena && (
+                  <span className="rounded-full border border-[#6b9bff]/45 bg-[#122244]/85 px-2.5 py-0.5 font-semibold text-[#9bb8ff] transition group-hover:border-[#9be7ff] group-hover:text-white">
+                    View Profile
+                  </span>
+                )}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
+
+      {/* Naveena Kanakannanavar Profile Modal */}
+      <NaveenaProfileModal isOpen={naveenaOpen} onClose={() => setNaveenaOpen(false)} />
 
       {/* Faculty Guide + Institution + NAAC Badge Placeholder */}
       <div className="mt-5 grid gap-5 lg:grid-cols-12">
